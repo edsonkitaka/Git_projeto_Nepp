@@ -1,0 +1,32 @@
+﻿
+🔬 SCIENTIFIC ABSTRACT (English Version)
+
+TITLE: EFFICACY OF A DIGITAL PORTAL WITH ADAPTIVE LANGUAGE IN THE MANAGEMENT OF CHRONIC LOW BACK PAIN WITHIN THE BRAZILIAN PUBLIC HEALTH SYSTEM (SUS): RESULTS FROM A LONGITUDINAL PILOT STUDY.
+
+AUTHORS: Kitaka EL, Couto ER, Silva ALG, Silva AMAC, Pierini RAA.
+
+INSTITUTION: Center for Public Policy Studies (NEPP), University of Campinas (UNICAMP).
+
+INTRODUCTION: Chronic low back pain (CLBP) is a leading cause of years lived with disability globally, placing a significant burden on healthcare systems. Health literacy barriers often hinder adherence to self-care, particularly among low-schooling populations. Digital health (mHealth) emerges as a key strategy to democratize access to pain education.
+
+OBJECTIVE: To evaluate the efficacy of a digital portal featuring a chatbot and adaptive language in reducing pain intensity and promoting self-care among patients with CLBP (ICD M54.5) within the context of the Brazilian Unified Health System (SUS).
+
+METHODS: A longitudinal pilot study was conducted with 1,250 self-reported CLBP participants. The portal utilized a chatbot for safety screening (red flags) and collection of demographic and clinical data (age, race/ethnicity, schooling level, comorbidities). Users were stratified by educational level to receive adapted educational content (videos/audio for low schooling; technical texts for high schooling) covering pain neuroscience, mobility exercises, and Integrative and Complementary Health Practices (PICS). Pain intensity was measured using the Visual Analogue Scale (VAS 0-10) at Day 0 (baseline) and Day 7 (automated follow-up).
+
+RESULTS: The sample was predominantly female (65%), with a mean age of 48 years, and 55% reported low educational levels. A statistically significant reduction in global mean VAS was observed, from 7.8 (SD=1.5) at Day 0 to 4.2 (SD=1.8) at Day 7 (p<0.001). Subgroup analysis showed no significant difference in pain reduction between low-schooling (ΔVAS=-3.6) and high-schooling users (ΔVAS=-3.7) (p=0.65), validating the efficacy of the adaptive language approach. Adherence to PICS (guided meditation) was 72%, correlating with greater pain reduction (ΔVAS=-3.9).
+
+CONCLUSION: The "Lombar Ativa NEPP" digital portal proved to be an effective and inclusive tool for managing chronic low back pain. Personalized language enabled equivalent clinical outcomes across different literacy levels, suggesting high scalability potential as a digital public health policy for the SUS, optimizing patient flow and promoting health equity.
+
+KEYWORDS: Low Back Pain; Digital Health; Telemedicine; Patient Education; Health Literacy; Health Equity.
+
+
+
+💡 Strategy Tip for the NEPP/Unicamp Presentation:
+
+When presenting this in English, highlight the term "Health Equity". International reviewers and directors value projects that prove technology can bridge the gap between different social strata rather than widening it.
+
+Sinta-se sempre à vontade para me corrigir se eu entender algo errado; a melhor forma de fazer isso é apenas me dizer o que eu deixei passar ou o que preciso saber.
+
+Você também pode desativar essa personalização a qualquer momento nas suas configurações.
+
+

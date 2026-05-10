@@ -1,0 +1,106 @@
+﻿
+DOCUMENTO DE PROJETO PILOTO: LOMBAR ATIVA (MVP)
+
+Instituição: Núcleo de Estudos de Políticas Públicas (NEPP) – Unicamp
+
+Liderança: Edson Luiz Kitaka, Dra. Evelyn Regina Couto, Profa. Dra. Ana Lúcia G. da Silva, Profa. Dra. Ana Maria A. C. da Silva e Rodrigo Alexander A. Pierini.
+
+
+
+1. ESCOPO TÉCNICO DO MVP
+
+O projeto piloto foca exclusivamente na Dor Lombar Inespecífica (CID-10: M54.5). O objetivo é validar a eficácia da linguagem adaptativa e a viabilidade da coleta de dados longitudinais.
+
+Fluxo de Navegação (Mobile-First)
+
+Acolhimento & Ética: Verificação da LGPD e Termo de Consentimento.
+
+Triagem & Red Flags: Questionário de segurança para excluir urgências médicas.
+
+Perfil do Usuário: Coleta de Escolaridade (Diferenciador Pedagógico) e Demografia (Raça/Etnia/Idade).
+
+Entrega Adaptada: * Nível A (Baixa Escolaridade): Vídeos demonstrativos e áudios instrutivos.
+
+Nível B (Alta Escolaridade): Artigos científicos e infográficos técnicos.
+
+Intervenção PICS: Meditação guiada "Relaxamento Lombar Profundo" (Áudio).
+
+Follow-up (7 dias): Reavaliação automática da Escala de Dor (EVA).
+
+
+
+2. CONTEÚDO TÉCNICO E PEDAGÓGICO
+
+A. O Chatbot (Lógica de Pergunta e Resposta)
+
+O sistema utilizará botões de resposta rápida para evitar erros de digitação e facilitar a análise estatística:
+
+Pergunta: "Onde você sente dor?" -> [Lombar] -> Aciona Trilha M54.5.
+
+Pergunta: "Nota da dor agora (0 a 10)?" -> [Valor Numérico].
+
+B. Práticas Integrativas (PICS)
+
+O roteiro de meditação foca na Educação em Dor, utilizando a respiração diafragmática para reduzir o espasmo muscular protetor da região lombar.
+
+
+
+Shutterstock
+
+
+
+3. INFRAESTRUTURA DE DADOS (COORDENAÇÃO TÉCNICA)
+
+A base de dados será organizada pelo Sr. Edson e pelo Sr. Rodrigo para permitir o cruzamento de variáveis:
+
+Variável
+
+Tipo de Dado
+
+Objetivo Analítico
+
+Escolaridade
+
+Categórico
+
+Avaliar a eficácia da comunicação em diferentes estratos sociais.
+
+CID-10
+
+Codificado
+
+Padronizar a patologia para publicações epidemiológicas.
+
+Δ EVA (Delta)
+
+Numérico
+
+Medir a variação da dor entre o dia 0 e o dia 7.
+
+PICS_Acesso
+
+Booleano (Sim/Não)
+
+Correlacionar o uso de práticas integrativas com a melhora clínica.
+
+
+
+4. CRONOGRAMA DE LANÇAMENTO (MVP)
+
+Semanas 1-4: Curadoria de conteúdo e gravação dos vídeos/áudios.
+
+Semanas 5-8: Desenvolvimento do Chatbot e estruturação do Banco de Dados.
+
+Semanas 9-11: Testes de usabilidade e revisão das Dras. Ana Lúcia e Ana Maria.
+
+Semana 12: Lançamento oficial no servidor Unicamp.
+
+
+
+🛡️ Nota de Privacidade e Ética
+
+Este protótipo atende integralmente à LGPD. Os dados coletados são de propriedade institucional do NEPP/Unicamp para fins de pesquisa em políticas públicas de saúde.
+
+
+
+

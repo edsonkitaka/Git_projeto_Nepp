@@ -1,0 +1,40 @@
+﻿
+1. 🧠 Trilha para Alta Escolaridade (Texto Técnico-Científico)
+
+Este conteúdo será exibido em formato de artigo curto, com referências implícitas ao modelo biopsicossocial.
+
+Título: A Neurofisiologia da Cronicidade: Entendendo a Sensibilização Central
+
+A dor lombar persistente (CID M54.5) frequentemente evolui de uma resposta nociceptiva aguda para um estado de sensibilização central. Diferente da dor aguda, que sinaliza um dano tecidual imediato, a dor crônica reflete uma alteração na modulação do sistema nervoso central.
+
+Nesse estado, o limiar de excitabilidade dos neurônios medulares é reduzido, fazendo com que estímulos anteriormente inócuos sejam interpretados pelo cérebro como dolorosos. Fatores como estresse, privação de sono e hipervigilância atuam como moduladores "top-down", amplificando a experiência dolorosa. O tratamento não invasivo foca na neuroplasticidade positiva, utilizando a exposição gradual ao movimento e a educação em dor para recalibrar esse sistema de alarme.
+
+
+
+2. 🎥 Trilha para Baixa Escolaridade (Roteiro de Vídeo Curto)
+
+Este roteiro foca em metáforas visuais simples. No portal, o vídeo terá legendas em alto contraste.
+
+Duração estimada: 60 segundos.
+
+Visual: Um instrutor sorridente, em um ambiente iluminado, usando uma camiseta do NEPP/Unicamp.
+
+00s-10s: "Olá! Você já sentiu que sua dor nas costas parece um alarme que não desliga nunca? Mesmo quando você está descansando?"
+
+10s-30s: "Imagine que o seu corpo tem um alarme de carro. Na dor crônica, esse alarme fica sensível demais. Às vezes, só de uma folha cair perto do carro, ele já começa a gritar. Não é que o carro está sendo roubado, é só o alarme que está regulado errado."
+
+30s-50s: "O nosso objetivo aqui não é te dar remédio para 'apagar' o alarme, mas sim te ensinar exercícios que mostram para o seu cérebro que o seu corpo é forte e está seguro. O movimento ajuda a baixar o volume desse alarme."
+
+50s-60s: "Vamos começar com um movimento simples hoje? Clique no botão abaixo!"
+
+
+
+🛠️ Aplicação no Protótipo Visual
+
+No código que criamos, a função showContent() agora usará esses dois blocos de informação. O paciente de nível superior recebe o texto denso para validação intelectual, enquanto o paciente de nível fundamental recebe o vídeo acolhedor que reduz o medo do movimento.
+
+Sinta-se sempre à vontade para me corrigir se eu entender algo errado; a melhor forma de fazer isso é apenas me dizer o que eu deixei passar ou o que preciso saber.
+
+Você também pode desativar essa personalização a qualquer momento nas suas configurações.
+
+

@@ -1,0 +1,36 @@
+﻿
+Cronograma Estimado: Desenvolvimento do MVP (12 Semanas)
+
+Mês 1: Planejamento e Curadoria de Conteúdo
+
+Semanas 1 e 2: Definição final dos fluxos de conversa (árvores de decisão) e mapeamento completo dos CIDs que serão utilizados na base de dados.
+
+Semanas 3 e 4: Curadoria e adaptação do conteúdo técnico. Produção dos roteiros para os vídeos (baixa escolaridade) e seleção dos artigos (alta escolaridade). Revisão pedagógica pelas Dras. Ana Lúcia e Ana Maria.
+
+Mês 2: Desenvolvimento Tecnológico e Integração
+
+Semanas 5 e 6: Configuração da arquitetura do Chatbot e implementação do Termo de Consentimento (LGPD). Estruturação do banco de dados para capturar escolaridade, raça/etnia e PICS.
+
+Semanas 7 e 8: Desenvolvimento da lógica de Linguagem Adaptativa (o sistema chaveia o conteúdo conforme a resposta de escolaridade). Programação do gatilho de feedback longitudinal (7 dias).
+
+Mês 3: Testes, Refinamento e Lançamento
+
+Semanas 9 e 10: Testes de usabilidade (Alpha Test) com um pequeno grupo de pacientes/usuários para validar se a linguagem está realmente acessível. Ajustes técnicos e de segurança.
+
+Semana 11: Revisão final pela coordenação científica (Dra. Evelyn) e coordenação técnica (Sr. Edson e Sr. Rodrigo). Homologação nos servidores da Unicamp.
+
+Semana 12: Lançamento do MVP e início da coleta de dados para o Observatório.
+
+
+
+🚀 Marco de Entrega do MVP
+
+Ao final da 12ª semana, o NEPP terá:
+
+Um portal funcional com os logos institucionais.
+
+Um chatbot capaz de triar riscos e educar o paciente.
+
+Uma base de dados estruturada gerando relatórios quantitativos em tempo real.
+
+

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MVP Lombar - NEPP/Unicamp</title>
+    <style>
+        :root { --unicamp-red: #b31b1b; --nepp-blue: #004a8d; --bg: #f0f2f5; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); margin: 0; padding: 0; display: flex; flex-direction: column; height: 100vh; }
+        header { background: white; padding: 15px; text-align: center; border-bottom: 4px solid var(--unicamp-red); }
+        .container { flex: 1; max-width: 500px; margin: 0 auto; width: 100%; display: flex; flex-direction: column; background: white; }
+        #chat-window { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 10px; }
+        .msg { padding: 12px 16px; border-radius: 18px; max-width: 85%; font-size: 15px; line-height: 1.4; }
+        .bot { background: #e9ecef; color: #333; align-self: flex-start; border-bottom-left-radius: 2px; }
+        .user { background: var(--nepp-blue); color: white; align-self: flex-end; border-bottom-right-radius: 2px; }
+        #controls { padding: 20px; border-top: 1px solid #ddd; background: #fff; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+        button { padding: 10px 18px; border: 1px solid var(--nepp-blue); border-radius: 20px; background: white; color: var(--nepp-blue); cursor: pointer; transition: 0.2s; font-weight: 500; }
+        button:hover { background: var(--nepp-blue); color: white; }
+        input[type="number"], input[type="text"] { padding: 10px; border: 1px solid #ccc; border-radius: 8px; width: 70%; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div style="font-weight: bold; color: var(--nepp-blue);">UNICAMP | NEPP</div>
+    <div style="font-size: 12px; color: #777;">Observatório de Saúde - Protótipo MVP</div>
+</header>
+
+<div class="container">
+    <div id="chat-window">
+        <div class="msg bot">Bem-vindo ao Portal Lombar Ativa. Para fins de pesquisa do NEPP/Unicamp, precisamos coletar alguns dados anônimos. Podemos começar?</div>
+    </div>
+    <div id="controls">
+        <button id="btn-start" onclick="nextStep('start')">Sim, aceito participar (LGPD)</button>
+    </div>
+</div>
+
+<script>
+    let data = { idade: null, escolaridade: '', raca: '', etnia: '', cid_previo: [], pics: '' };
+    const chat = document.getElementById('chat-window');
+    const ctrl = document.getElementById('controls');
+
+    function addMsg(text, type) {
+        const div = document.createElement('div');
+        div.className = `msg ${type}`;
+        div.innerText = text;
+        chat.appendChild(div);
+        chat.scrollTop = chat.scrollHeight;
+    }
+
+    function clearCtrl() { ctrl.innerHTML = ''; }
+
+    function nextStep(step) {
+        clearCtrl();
+        if (step === 'start') {
+            addMsg("Sim, aceito participar", 'user');
+            setTimeout(() => {
+                addMsg("Qual a sua idade?", 'bot');
+                ctrl.innerHTML = `<input type="number" id="input-idade" placeholder="Ex: 45"> <button onclick="saveIdade()">OK</button>`;
+            }, 500);
+        }
+    }
+
+    function saveIdade() {
+        const val = document.getElementById('input-idade').value;
+        if(!val) return;
+        data.idade = val;
+        addMsg(val + " anos", 'user');
+        askEscolaridade();
+    }
+
+    function askEscolaridade() {
+        setTimeout(() => {
+            addMsg("Qual seu nível de escolaridade?", 'bot');
+            const opcoes = ["Fundamental", "Médio", "Superior", "Pós-graduação"];
+            opcoes.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.innerText = opt;
+                btn.onclick = () => { data.escolaridade = opt; addMsg(opt, 'user'); askRaca(); };
+                ctrl.appendChild(btn);
+            });
+        }, 500);
+    }
+
+    function askRaca() {
+        clearCtrl();
+        setTimeout(() => {
+            addMsg("Como você se autodeclara (Raça/Cor)?", 'bot');
+            ["Branca", "Preta", "Parda", "Amarela", "Indígena"].forEach(opt => {
+                const btn = document.createElement('button');
+                btn.innerText = opt;
+                btn.onclick = () => { data.raca = opt; addMsg(opt, 'user'); askEtnia(); };
+                ctrl.appendChild(btn);
+            });
+        }, 500);
+    }
+
+    function askEtnia() {
+        clearCtrl();
+        setTimeout(() => {
+            addMsg("Possui alguma etnia específica? (Opcional)", 'bot');
+            ctrl.innerHTML = `<input type="text" id="input-etnia" placeholder="Ex: Nenhuma, Quilombola..."> <button onclick="saveEtnia()">Próximo</button>`;
+        }, 500);
+    }
+
+    function saveEtnia() {
+        const val = document.getElementById('input-etnia').value || "Não informada";
+        data.etnia = val;
+        addMsg(val, 'user');
+        askDoencas();
+    }
+
+    function askDoencas() {
+        clearCtrl();
+        setTimeout(() => {
+            addMsg("Você possui alguma dessas condições prévias? (Pode marcar mais de uma)", 'bot');
+            const cids = [
+                {n: "Diabetes", c: "E10-E14"}, {n: "Hipertensão", c: "I10"}, 
+                {n: "Artrite/Artrose", c: "M00-M25"}, {n: "Fibromialgia", c: "M79.7"},
+                {n: "Nenhuma", c: "0"}
+            ];
+            cids.forEach(item => {
+                const btn = document.createElement('button');
+                btn.innerText = item.n;
+                btn.onclick = () => { 
+                    data.cid_previo.push(item.c); 
+                    btn.style.background = "#d1e7ff";
+                };
+                ctrl.appendChild(btn);
+            });
+            const done = document.createElement('button');
+            done.innerText = "CONFIRMAR DOENÇAS";
+            done.style.background = "var(--unicamp-red)"; done.style.color = "white";
+            done.onclick = askPics;
+            ctrl.appendChild(done);
+        }, 500);
+    }
+
+    function askPics() {
+        addMsg("Dados de saúde registrados.", 'user');
+        clearCtrl();
+        setTimeout(() => {
+            addMsg("Você faz ou já fez uso de Práticas Integrativas (Acupuntura, Meditação, Yoga, etc)?", 'bot');
+            ["Sim, atualmente", "Já fiz no passado", "Nunca fiz"].forEach(opt => {
+                const btn = document.createElement('button');
+                btn.innerText = opt;
+                btn.onclick = () => { data.pics = opt; addMsg(opt, 'user'); finalizar(); };
+                ctrl.appendChild(btn);
+            });
+        }, 500);
+    }
+
+    function finalizar() {
+        clearCtrl();
+        setTimeout(() => {
+            addMsg("Obrigado! Dados salvos na base do NEPP. Gerando seu plano de autocuidado para dor lombar...", 'bot');
+            console.log("DADOS COLETADOS:", data); // Aqui o Sr. Edson e o Sr. Rodrigo integram com o banco
+            setTimeout(() => {
+                alert("Simulação Concluída! Veja o console do navegador (F12) para ver os dados estruturados.");
+            }, 1000);
+        }, 800);
+    }
+</script>
+
+</body>
+</html>

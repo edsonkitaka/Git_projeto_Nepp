@@ -1,0 +1,56 @@
+﻿
+PROPOSTA DE PROJETO INSTITUCIONAL: PORTAL OBSERVATÓRIO DE SAÚDE E AUTOCUIDADO NA DOR CRÔNICA
+
+Instituição: Núcleo de Estudos de Políticas Públicas (NEPP) – Unicamp
+
+Eixo Estratégico: Tecnologia, Educação e Saúde Pública
+
+1. APRESENTAÇÃO E JUSTIFICATIVA
+
+A dor crônica musculoesquelética representa um dos maiores desafios para a saúde pública contemporânea, gerando altos custos previdenciários e queda na qualidade de vida. Este projeto propõe a criação de um ecossistema digital (Portal e Chatbot) voltado à democratização do acesso a orientações sobre tratamentos não invasivos e não medicamentosos. A iniciativa se fundamenta na neurociência da dor e na educação em saúde, utilizando como referências as melhores práticas internacionais (NHS e AHP Suffolk).
+
+2. OBJETIVOS ESTRATÉGICOS
+
+Educação Inclusiva: Oferecer suporte informativo adaptado a diferentes níveis de escolaridade.
+
+Vigilância Epidemiológica: Coletar dados longitudinais anônimos para subsidiar pesquisas e políticas públicas.
+
+Descompressão do Sistema: Estimular o autocuidado seguro e consciente, reduzindo a busca por intervenções invasivas desnecessárias.
+
+3. EQUIPE TÉCNICA
+
+O projeto conta com um corpo multidisciplinar de especialistas do NEPP/Unicamp:
+
+Dra. Evelyn Regina Couto: Coordenação Científica e Alinhamento em Saúde Pública.
+
+Profa. Dra. Ana Lúcia Gonçalves da Silva: Supervisão Pedagógica e Metodologias de Educação em Saúde.
+
+Sr. Edson Luiz Kitaka: Coordenação Técnica, Arquitetura de Sistemas e Gestão de Dados.
+
+Sr. Rodrigo Alexander A. Pierini: Implementação Tecnológica e Governança de Dados.
+
+4. ARQUITETURA DA SOLUÇÃO
+
+O portal será composto por um chatbot inteligente com as seguintes funcionalidades:
+
+Triagem de Segurança (Red Flags): Protocolo para identificação de urgências médicas.
+
+Coleta de Dados Estruturados: Registro de variáveis demográficas (idade, sexo, raça, etnia e escolaridade) e clínicas através da associação direta com o CID (Classificação Internacional de Doenças).
+
+Mapeamento de PICS: Registro do uso de Práticas Integrativas e Complementares (Z94).
+
+Inteligência de Linguagem: Adaptação do conteúdo (vídeo/áudio para baixa escolaridade; textos técnicos para alta escolaridade).
+
+5. METODOLOGIA DE PESQUISA (DADOS LONGITUDINAIS)
+
+Para garantir o rigor científico, o sistema realizará o acompanhamento longitudinal:
+
+Marco Zero: Coleta da intensidade da dor e impacto funcional no primeiro contato.
+
+Feedback de 7 Dias: Reavaliação automatizada para medir a eficácia das orientações e o nível de adesão do paciente.
+
+6. CONFORMIDADE ÉTICA E LGPD
+
+Todo o tráfego de informações será regido pela Lei Geral de Proteção de Dados. O acesso à interação será condicionado ao aceite do Termo de Consentimento Livre e Esclarecido (TCLE). Os dados gerados serão anonimizados, servindo exclusivamente para fins de pesquisa e desenvolvimento de indicadores de políticas públicas pelo NEPP.
+
+

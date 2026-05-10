@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@theme {
+  /* Paleta institucional NEPP / UNICAMP — alta legibilidade (NHS-like) */
+  --color-unicamp-red: #8b0000;
+  --color-unicamp-red-soft: #b31b1b;
+  --color-nepp-blue: #003366;
+  --color-nepp-blue-deep: #001a33;
+  --color-accent-gold: #ffd700;
+  --color-ink: #1a1a1a;
+  --color-paper: #ffffff;
+  --color-mute: #f4f7f6;
+  --color-mute-2: #e9ecef;
+  --color-line: #d8dcdf;
+
+  /* Tipografia — Arial/Helvetica intencionalmente, segue diretriz de acessibilidade do mock V4 */
+  --font-sans: Arial, Helvetica, system-ui, sans-serif;
+
+  /* Tamanhos — base 18px (mock alta-legibilidade) */
+  --text-base: 1.125rem;     /* 18px */
+  --text-lg: 1.25rem;        /* 20px */
+  --text-xl: 1.5rem;         /* 24px */
+  --text-2xl: 2rem;          /* 32px */
+  --text-3xl: 2.5rem;        /* 40px */
+
+  /* Linha — generosa pra leitura confortável */
+  --leading-relaxed: 1.7;
+  --leading-loose: 1.8;
+}
+
+/* Reset mínimo + tipografia base institucional */
+html {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--color-ink);
+  background: var(--color-paper);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Foco visível para acessibilidade — exigência implícita do projeto (baixa visão / baixa escolaridade) */
+*:focus-visible {
+  outline: 3px solid var(--color-nepp-blue);
+  outline-offset: 2px;
+}
+
+/* Modo "alta legibilidade" — pode ser ativado via classe no <html> */
+.high-contrast {
+  --color-paper: #ffffff;
+  --color-ink: #000000;
+  --color-line: #000000;
+}
+
+.high-contrast a {
+  text-decoration: underline;
+}

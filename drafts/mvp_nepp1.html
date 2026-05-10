@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MVP - Lombar - 1 - NEPP/Unicamp</title>
+    <style>
+        :root {
+            --unicamp-red: #b31b1b;
+            --nepp-blue: #004a8d;
+            --bg-light: #f4f7f6;
+        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg-light); margin: 0; padding: 0; }
+        header { background: white; padding: 20px; text-align: center; border-bottom: 4px solid var(--unicamp-red); box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .logos { font-weight: bold; color: var(--nepp-blue); font-size: 1.2rem; margin-bottom: 10px; }
+        .container { max-width: 600px; margin: 20px auto; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        
+        /* Chatbot Style */
+        #chat-container { height: 400px; overflow-y: auto; border: 1px solid #ddd; padding: 15px; border-radius: 8px; margin-bottom: 15px; background: #fafafa; }
+        .msg { margin-bottom: 15px; padding: 10px 15px; border-radius: 15px; max-width: 80%; line-height: 1.4; }
+        .bot { background: #e1f5fe; color: #01579b; align-self: flex-start; }
+        .user { background: var(--nepp-blue); color: white; margin-left: auto; text-align: right; }
+        
+        .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        button { padding: 12px; border: none; border-radius: 8px; background: var(--nepp-blue); color: white; cursor: pointer; transition: 0.3s; font-size: 0.9rem; }
+        button:hover { background: var(--unicamp-red); }
+        button:disabled { background: #ccc; cursor: not-allowed; }
+
+        .hidden { display: none; }
+        .content-area { border-top: 2px solid #eee; margin-top: 20px; padding-top: 20px; }
+        video { width: 100%; border-radius: 8px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logos">UNICAMP | NEPP</div>
+    <div style="font-size: 0.9rem; color: #666;">Observatório de Saúde e Autocuidado</div>
+</header>
+
+<div class="container" id="app">
+    <div id="screen-lgpd">
+        <h3>Termo de Consentimento (LGPD)</h3>
+        <p>Este portal é um projeto de pesquisa do <strong>NEPP/Unicamp</strong> coordenado pelo Sr. Edson Kitaka. Seus dados serão usados de forma anônima para estudos de políticas públicas.</p>
+        <button onclick="startChat()" style="width: 100%;">Aceito e Quero Começar</button>
+    </div>
+
+    <div id="screen-chat" class="hidden">
+        <div id="chat-container">
+            <div class="msg bot">Olá! Sou o assistente do NEPP. Para começar, qual o seu nível de escolaridade?</div>
+        </div>
+        <div id="chat-controls" class="options-grid">
+            <button onclick="handleStep('escolaridade', 'baixa')">Fundamental/Médio</button>
+            <button onclick="handleStep('escolaridade', 'alta')">Superior/Pós</button>
+        </div>
+    </div>
+
+    <div id="screen-content" class="hidden">
+        <h3 id="content-title">Suas Orientações para Dor Lombar</h3>
+        <div id="content-body" class="content-area"></div>
+        <button onclick="location.reload()" style="margin-top:20px; background:#666;">Voltar ao Início</button>
+    </div>
+</div>
+
+<script>
+    let userData = { escolaridade: '', dorInicial: 0 };
+
+    function startChat() {
+        document.getElementById('screen-lgpd').classList.add('hidden');
+        document.getElementById('screen-chat').classList.remove('hidden');
+    }
+
+    function addMessage(text, side) {
+        const container = document.getElementById('chat-container');
+        const div = document.createElement('div');
+        div.className = `msg ${side}`;
+        div.innerText = text;
+        container.appendChild(div);
+        container.scrollTop = container.scrollHeight;
+    }
+
+    function handleStep(step, value) {
+        if (step === 'escolaridade') {
+            userData.escolaridade = value;
+            addMessage(value === 'baixa' ? "Fundamental/Médio" : "Superior/Pós", 'user');
+            setTimeout(() => {
+                addMessage("Entendido. De 0 a 10, qual o nível da sua dor lombar agora?", 'bot');
+                renderPainScale();
+            }, 600);
+        }
+    }
+
+    function renderPainScale() {
+        const controls = document.getElementById('chat-controls');
+        controls.innerHTML = '';
+        for (let i = 0; i <= 10; i+=2) {
+            let btn = document.createElement('button');
+            btn.innerText = i;
+            btn.onclick = () => finishChat(i);
+            controls.appendChild(btn);
+        }
+    }
+
+    function finishChat(valor) {
+        userData.dorInicial = valor;
+        addMessage(`Minha dor é nível ${valor}`, 'user');
+        setTimeout(() => {
+            addMessage("Obrigado! Gerando seu plano de autocuidado personalizado...", 'bot');
+            setTimeout(showContent, 1000);
+        }, 600);
+    }
+
+    function showContent() {
+        document.getElementById('screen-chat').classList.add('hidden');
+        const screenContent = document.getElementById('screen-content');
+        const body = document.getElementById('content-body');
+        screenContent.classList.remove('hidden');
+
+        if (userData.escolaridade === 'baixa') {
+            body.innerHTML = `
+                <p><strong>Dica de Hoje:</strong> Não fique parado! O movimento ajuda a soltar as costas.</p>
+                <div style="background:#eee; padding:20px; text-align:center; border-radius:8px;">
+                    [🎥 VÍDEO: Exercícios Simples de 1 Minuto]
+                </div>
+                <p>🎧 <strong>Ouça o áudio:</strong> Relaxamento da Lombar (PICS)</p>
+            `;
+        } else {
+            body.innerHTML = `
+                <p><strong>Análise Clínica (CID M54.5):</strong> A literatura recomenda a dessensibilização central através da exposição gradual ao movimento.</p>
+                <ul>
+                    <li>Pratique a respiração diafragmática para reduzir o tônus muscular.</li>
+                    <li>Evite o repouso prolongado para prevenir a rigidez articular.</li>
+                </ul>
+                <p>🧘 <strong>Acesse o Guia:</strong> Protocolo de Meditação Ativa (PICS)</p>
+            `;
+        }
+    }
+</script>
+
+</body>
+</html>

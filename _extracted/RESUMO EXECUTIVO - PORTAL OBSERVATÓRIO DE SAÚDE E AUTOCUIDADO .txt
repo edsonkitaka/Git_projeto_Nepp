@@ -1,0 +1,40 @@
+﻿
+RESUMO EXECUTIVO: PORTAL OBSERVATÓRIO DE SAÚDE E AUTOCUIDADO (NEPP/UNICAMP)
+
+Visão Geral
+
+O projeto propõe a criação de uma plataforma digital inteligente voltada ao manejo da dor crônica musculoesquelética por meio de tratamentos não invasivos e não medicamentosos. O diferencial da solução reside na união entre assistência educativa à população e a geração de dados epidemiológicos de alta qualidade para o Núcleo de Estudos de Políticas Públicas (NEPP) da Unicamp.
+
+O Problema
+
+A dor crônica é um dos principais motivos de afastamento do trabalho e sobrecarga do sistema de saúde. Frequentemente, a falta de orientação adequada leva ao uso excessivo de fármacos e procedimentos invasivos sem a devida necessidade.
+
+A Solução
+
+Chatbot Educativo: Um assistente virtual que realiza triagem de segurança e entrega orientações de autocuidado personalizadas.
+
+Linguagem Adaptativa: O sistema identifica o nível de escolaridade do usuário para oferecer conteúdos em formatos adequados (vídeos/áudios ou textos técnicos).
+
+Base de Dados Quantitativa: Registro estruturado com códigos CID, dados demográficos e uso de Práticas Integrativas (PICS).
+
+Pesquisa Longitudinal: Monitoramento de eficácia após 7 dias para geração de indicadores científicos.
+
+Equipe Estratégica
+
+O projeto é liderado por um corpo docente e técnico de excelência:
+
+Dra. Evelyn Regina Couto (Coordenação Científica)
+
+Profa. Dra. Ana Lúcia Gonçalves da Silva (Supervisão Pedagógica)
+
+Profa. Dra. Ana Maria Alves Carneiro da Silva (Apoio Acadêmico e Institucional)
+
+Sr. Edson Luiz Kitaka (Coordenação Técnica e Arquitetura de Sistemas)
+
+Sr. Rodrigo Alexander A. Pierini (Implementação e Governança de Dados)
+
+Impacto Esperado
+
+Fortalecimento do papel da Unicamp na vanguarda das políticas públicas de saúde digital, democratização do acesso ao conhecimento científico e criação de um banco de dados inédito para publicações e tomadas de decisão governamentais.
+
+

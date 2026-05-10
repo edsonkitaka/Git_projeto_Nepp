@@ -1,0 +1,10 @@
+﻿
+O projeto pode evoluir para:
+
+Produção de Conteúdo: Gravação dos vídeos curtos (padrão baixa escolaridade) e redação dos guias técnicos (padrão alta escolaridade).
+
+Refinamento da Base de Dados: Estruturação final das tabelas SQL com o Sr. Rodrigo para garantir que cada clique no chatbot alimente o Observatório.
+
+Testes de Campo: Apresentação deste protótipo executável para a Dra. Evelyn e as demais professoras para ajustes finos de linguagem médica.
+
+

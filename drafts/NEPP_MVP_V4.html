@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal NEPP - Diagnóstico Clínico</title>
+    <style>
+        :root { --unicamp-red: #8B0000; --nepp-blue: #003366; --white: #FFFFFF; --black: #000000; }
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #1a1a1a; margin: 0; background: var(--white); font-size: 18px; }
+        header { background: var(--white); border-bottom: 5px solid var(--unicamp-red); padding: 15px 20px; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .hero { background: #001a33; color: white; padding: 40px 20px; text-align: center; }
+        .hero h1 { color: #FFD700; margin: 0; font-size: 2.2rem; }
+        .main { max-width: 1000px; margin: 0 auto; padding: 20px; }
+        
+        /* Chatbot Style */
+        #chat-modal { width: 100%; max-width: 500px; margin: 0 auto; border: 4px solid var(--black); background: white; height: 650px; display: flex; flex-direction: column; }
+        .chat-header { background: var(--nepp-blue); color: white; padding: 15px; font-weight: bold; text-align: center; }
+        #chat-body { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; background: #f9f9f9; }
+        .chat-footer { padding: 15px; border-top: 4px solid var(--black); background: #eee; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+        
+        .bubble { padding: 12px; border-radius: 8px; font-size: 0.95rem; border: 2px solid #ccc; font-weight: 600; max-width: 85%; }
+        .bot { background: #fff; border-color: var(--nepp-blue); align-self: flex-start; }
+        .user { background: var(--nepp-blue); color: white; align-self: flex-end; }
+        
+        button.opt { padding: 10px 15px; font-weight: bold; border: 2px solid var(--black); background: white; cursor: pointer; border-radius: 5px; }
+        button.opt:hover { background: var(--nepp-blue); color: white; }
+        button.selected { background: var(--unicamp-red) !important; color: white !important; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+<header><div style="font-weight: 800; color: var(--nepp-blue); text-align: center;">UNICAMP | NEPP - SAÚDE DIGITAL</div></header>
+
+<div class="hero"><h1>AVALIAÇÃO CLÍNICA MVP</h1></div>
+
+<div class="main">
+    <div id="chat-modal">
+        <div class="chat-header">ASSISTENTE VIRTUAL DE TRIAGEM</div>
+        <div id="chat-body">
+            <div class="bubble bot">Olá. Vamos iniciar seu refinamento clínico. Seus dados são confidenciais (LGPD). Podemos prosseguir?</div>
+        </div>
+        <div class="chat-footer" id="chat-controls">
+            <button class="opt" onclick="flow('inicio')">SIM, VAMOS COMEÇAR</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    let diagnosticData = { 
+        localizacao: '', intensidade: 0, gatilho: '', 
+        comorbidades: [], emocional: [], hipoteses_cid: [] 
+    };
+
+    function addMsg(text, side) {
+        const b = document.getElementById('chat-body');
+        const d = document.createElement('div');
+        d.className = `bubble ${side}`;
+        d.innerText = text;
+        b.appendChild(d);
+        b.scrollTop = b.scrollHeight;
+    }
+
+    function clearCtrl() { document.getElementById('chat-controls').innerHTML = ''; }
+
+    function flow(step) {
+        const ctrl = document.getElementById('chat-controls');
+        clearCtrl();
+
+        if (step === 'inicio') {
+            addMsg("Sim, vamos começar", 'user');
+            setTimeout(() => {
+                addMsg("Onde exatamente você sente a dor agora?", 'bot');
+                ["Apenas na Lombar", "Lombar que desce para as pernas", "Lombar e Quadril"].forEach(o => {
+                    let b = document.createElement('button'); b.className="opt"; b.innerText=o;
+                    b.onclick = () => { diagnosticData.localizacao = o; addMsg(o, 'user'); flow('gatilho'); };
+                    ctrl.appendChild(b);
+                });
+            }, 600);
+        } else if (step === 'gatilho') {
+            addMsg("Essa dor aparece ou piora após qual dessas situações?", 'bot');
+            ["Ficar muito tempo em pé", "Ao sentar/levantar", "Após carregar peso", "Piora ao tossir/espirrar"].forEach(o => {
+                let b = document.createElement('button'); b.className="opt"; b.innerText=o;
+                b.onclick = () => { diagnosticData.gatilho = o; addMsg(o, 'user'); flow('comorbidades'); };
+                ctrl.appendChild(b);
+            });
+        } else if (step === 'comorbidades') {
+            addMsg("Você possui alguma dessas condições pré-existentes? (Selecione todas que se aplicam)", 'bot');
+            const doencas = ["Diabetes", "Hipertensão", "Artrite/Artrose", "Hérnia de Disco"];
+            doencas.forEach(d => {
+                let b = document.createElement('button'); b.className="opt"; b.innerText=d;
+                b.onclick = () => { b.classList.toggle('selected'); if(!diagnosticData.comorbidades.includes(d)) diagnosticData.comorbidades.push(d); };
+                ctrl.appendChild(b);
+            });
+            let next = document.createElement('button'); next.innerText = "PRÓXIMO ➔"; next.className="opt";
+            next.style.background = "#000"; next.style.color = "#fff";
+            next.onclick = () => { addMsg("Condições registradas.", 'user'); flow('emocional'); };
+            ctrl.appendChild(next);
+        } else if (step === 'emocional') {
+            addMsg("Como você tem se sentido emocionalmente nos últimos dias?", 'bot');
+            ["Ansioso(a)", "Triste/Desanimado(a)", "Estressado(a)", "Bem/Equilibrado(a)"].forEach(o => {
+                let b = document.createElement('button'); b.className="opt"; b.innerText=o;
+                b.onclick = () => { diagnosticData.emocional.push(o); addMsg(o, 'user'); finalizar(); };
+                ctrl.appendChild(b);
+            });
+        }
+    }
+
+    function finalizar() {
+        // Lógica de Hipótese Diagnóstica (Simulação de IA Clínica)
+        if(diagnosticData.localizacao.includes("pernas")) diagnosticData.hipoteses_cid.push("M54.4 (Lombociatalgia)");
+        else diagnosticData.hipoteses_cid.push("M54.5 (Dor Lombar Baixa)");
+
+        addMsg("Avaliação Concluída. Com base nas suas respostas, nossa equipe sugere foco em exercícios de mobilidade e relaxamento.", 'bot');
+        setTimeout(() => {
+            alert("SISTEMA: Hipótese Diagnóstica sugerida: " + diagnosticData.hipoteses_cid.join(", ") + "\n\nDados enviados ao Observatório NEPP.");
+            console.log("DADOS CLÍNICOS PARA O RODRIGO:", diagnosticData);
+        }, 1000);
+    }
+</script>
+
+</body>
+</html>
