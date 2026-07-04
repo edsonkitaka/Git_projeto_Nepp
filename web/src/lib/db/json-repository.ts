@@ -7,6 +7,7 @@
 //  - sem migrations — schema é o tipo TS
 
 import { promises as fs } from "node:fs";
+import os from "node:os";
 import path from "node:path";
 import { randomUUID } from "node:crypto";
 
@@ -23,7 +24,14 @@ import {
   emptySnapshot,
 } from "./types";
 
-const DATA_DIR = path.join(process.cwd(), ".data");
+// Em serverless (Vercel) o filesystem é somente-leitura exceto /tmp, que é
+// efêmero e não compartilhado entre instâncias — dados aqui NÃO persistem
+// de forma confiável em produção. Isso é um stopgap pra não derrubar o app
+// com ENOENT; a persistência real de pesquisa depende de trocar por um
+// Repository com banco de verdade (ver comentário em ./repository.ts).
+const DATA_DIR = process.env.VERCEL
+  ? path.join(os.tmpdir(), ".data")
+  : path.join(process.cwd(), ".data");
 const DB_FILE = path.join(DATA_DIR, "db.json");
 
 export class JsonFileRepository implements Repository {
